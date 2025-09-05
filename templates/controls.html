@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% set page_title = "Controls" %}
+
+{% block content %}
+<!-- Controls Page -->
+<div class="page active" id="controls-page">
+    <div class="controls-dashboard">
+        <div class="controls-header">
+            <h2><i class="fas fa-sliders-h"></i> Greenhouse Control Panel</h2>
+            <p>Manage all environmental systems and automation settings</p>
+        </div>
+        
+        <div class="controls-grid">
+            <!-- Irrigation System -->
+            <div class="control-card irrigation">
+                <div class="card-header">
+                    <h3><i class="fas fa-tint"></i> Irrigation System</h3>
+                    <div class="status-indicator active">Online</div>
+                </div>
+                
+                <div class="control-items">
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-shower"></i>
+                            <span>Water Pump</span>
+                        </div>
+                        <div class="control-widget">
+                            <div class="toggle-switch active" data-control="water-pump">
+                                <span class="toggle-slider"></span>
+                            </div>
+                            <span class="status-badge active">Running</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="far fa-clock"></i>
+                            <span>Duration</span>
+                        </div>
+                        <div class="control-widget">
+                            <select class="control-select" id="irrigation-duration">
+                                <option value="5">5 min</option>
+                                <option value="10" selected>10 min</option>
+                                <option value="15">15 min</option>
+                                <option value="20">20 min</option>
+                            </select>
+                            <span class="status-badge">10 min</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ventilation System -->
+            <div class="control-card ventilation">
+                <div class="card-header">
+                    <h3><i class="fas fa-fan"></i> Ventilation</h3>
+                    <div class="status-indicator">Offline</div>
+                </div>
+                
+                <div class="control-items">
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-fan"></i>
+                            <span>Fan Speed</span>
+                        </div>
+                        <div class="control-widget">
+                            <div class="slider-container">
+                                <input type="range" min="0" max="100" value="60" id="fan-speed" class="control-slider">
+                                <span class="slider-value">60%</span>
+                            </div>
+                            <span class="status-badge">60%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-door-open"></i>
+                            <span>Ventilation Flaps</span>
+                        </div>
+                        <div class="control-widget">
+                            <div class="toggle-switch" data-control="ventilation-flaps">
+                                <span class="toggle-slider"></span>
+                            </div>
+                            <span class="status-badge">Closed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lighting System -->
+            <div class="control-card lighting">
+                <div class="card-header">
+                    <h3><i class="fas fa-lightbulb"></i> Lighting</h3>
+                    <div class="status-indicator active">Online</div>
+                </div>
+                
+                <div class="control-items">
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Grow Lights</span>
+                        </div>
+                        <div class="control-widget">
+                            <div class="toggle-switch active" data-control="grow-lights">
+                                <span class="toggle-slider"></span>
+                            </div>
+                            <span class="status-badge active">On</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-sun"></i>
+                            <span>Brightness</span>
+                        </div>
+                        <div class="control-widget">
+                            <div class="slider-container">
+                                <input type="range" min="0" max="100" value="80" id="light-brightness" class="control-slider">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Presets -->
+            <div class="control-card presets">
+                <div class="card-header">
+                    <h3><i class="fas fa-magic"></i> Quick Presets</h3>
+                    <div class="status-indicator">Ready</div>
+                </div>
+                
+                <div class="preset-grid">
+                    <button class="preset-btn" data-preset="morning">
+                        <div class="preset-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <span>Morning</span>
+                    </button>
+                    <button class="preset-btn" data-preset="afternoon">
+                        <div class="preset-icon">
+                            <i class="fas fa-cloud-sun"></i>
+                        </div>
+                        <span>Afternoon</span>
+                    </button>
+                    <button class="preset-btn" data-preset="evening">
+                        <div class="preset-icon">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <span>Evening</span>
+                    </button>
+                    <button class="preset-btn" data-preset="night">
+                        <div class="preset-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span>Night</span>
+                    </button>
+                </div>
+                
+                <div class="preset-actions">
+                    <button class="btn btn-primary" id="apply-preset">
+                        <i class="fas fa-check"></i> Apply Selected
+                    </button>
+                    <button class="btn btn-secondary" id="save-preset">
+                        <i class="fas fa-save"></i> Save Current
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

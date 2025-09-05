@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% set page_title = "Analytics" %}
+
+{% block content %}
+<!-- Analytics Page -->
+<div class="page active" id="analytics-page">
+    <div class="analytics-container">
+        <div class="chart-container">
+            <canvas id="growthChart"></canvas>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon health">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <div class="stat-info">
+                    <h4>Plant Health</h4>
+                    <p class="stat-value healthy">87%</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon yield">
+                    <i class="fas fa-weight"></i>
+                </div>
+                <div class="stat-info">
+                    <h4>Yield Forecast</h4>
+                    <p class="stat-value">245 kg</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon water">
+                    <i class="fas fa-tint"></i>
+                </div>
+                <div class="stat-info">
+                    <h4>Water Usage</h4>
+                    <p class="stat-value">1.2 L/day</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon harvest">
+                    <i class="fas fa-calendar-harvest"></i>
+                </div>
+                <div class="stat-info">
+                    <h4>Harvest Date</h4>
+                    <p class="stat-value">18 days</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% set page_title = "Alerts" %}
+
+{% block content %}
+<!-- Alerts Page -->
+<div class="page active" id="alerts-page">
+    <div class="alerts-container">
+        <div class="alert-item critical">
+            <div class="alert-icon">!</div>
+            <div class="alert-content">
+                <h3><i class="fas fa-exclamation-triangle"></i> Soil pH Critical</h3>
+                <p>Measured pH level is 5.2 (Target: 6.0-7.0)</p>
+                <span class="alert-time">2 minutes ago</span>
+            </div>
+        </div>
+        
+        <div class="alert-item warning">
+            <div class="alert-icon">!</div>
+            <div class="alert-content">
+                <h3><i class="fas fa-exclamation-circle"></i> High Humidity</h3>
+                <p>Humidity at 78%, exceeds target range</p>
+                <span class="alert-time">15 minutes ago</span>
+            </div>
+        </div>
+        
+        <div class="alert-item info">
+            <div class="alert-icon">i</div>
+            <div class="alert-content">
+                <h3><i class="fas fa-check-circle"></i> Irrigation Cycle Complete</h3>
+                <p>Zone 2 irrigation completed successfully</p>
+                <span class="alert-time">1 hour ago</span>
+            </div>
+        </div>
+        
+        <div class="alert-item info">
+            <div class="alert-icon">i</div>
+            <div class="alert-content">
+                <h3><i class="fas fa-calendar-alt"></i> Fertilization Scheduled</h3>
+                <p>Next fertilization in 2 hours</p>
+                <span class="alert-time">3 hours ago</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% set page_title = "Monitoring" %}
+
+{% block content %}
+<!-- Monitoring Page -->
+<div class="page active" id="monitoring-page">
+    <div class="sensor-grid">
+        <div class="sensor-card">
+            <div class="sensor-header">
+                <h3><i class="fas fa-temperature-high"></i> Temperature</h3>
+                <span class="sensor-status optimal">Optimal</span>
+            </div>
+            <div class="sensor-value">24.5°C</div>
+            <div class="sensor-target">Target: 22-26°C</div>
+            <div class="sensor-progress">
+                <div class="progress-container">
+                    <span class="progress-label">65%</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 65%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sensor-card">
+            <div class="sensor-header">
+                <h3><i class="fas fa-tint"></i> Humidity</h3>
+                <span class="sensor-status warning">Warning</span>
+            </div>
+            <div class="sensor-value">78%</div>
+            <div class="sensor-target">Target: 60-70%</div>
+            <div class="sensor-progress">
+                <div class="progress-container">
+                    <span class="progress-label">85%</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill warning" style="width: 85%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sensor-card">
+            <div class="sensor-header">
+                <h3><i class="fas fa-water"></i> Soil Moisture</h3>
+                <span class="sensor-status optimal">Optimal</span>
+            </div>
+            <div class="sensor-value">42%</div>
+            <div class="sensor-target">Target: 35-50%</div>
+            <div class="sensor-progress">
+                <div class="progress-container">
+                    <span class="progress-label">45%</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 45%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sensor-card">
+            <div class="sensor-header">
+                <h3><i class="fas fa-sun"></i> Light Intensity</h3>
+                <span class="sensor-status optimal">Optimal</span>
+            </div>
+            <div class="sensor-value">850 lux</div>
+            <div class="sensor-target">Target: 600-1200 lux</div>
+            <div class="sensor-progress">
+                <div class="progress-container">
+                    <span class="progress-label">70%</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 70%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sensor-card">
+            <div class="sensor-header">
+                <h3><i class="fas fa-wind"></i> CO₂ Levels</h3>
+                <span class="sensor-status optimal">Optimal</span>
+            </div>
+            <div class="sensor-value">950 ppm</div>
+            <div class="sensor-target">Target: 800-1200 ppm</div>
+            <div class="sensor-progress">
+                <div class="progress-container">
+                    <span class="progress-label">60%</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sensor-card">
+            <div class="sensor-header">
+                <h3><i class="fas fa-vial"></i> pH Level</h3>
+                <span class="sensor-status critical">Critical</span>
+            </div>
+            <div class="sensor-value">5.2</div>
+            <div class="sensor-target">Target: 6.0-7.0</div>
+            <div class="sensor-progress">
+                <div class="progress-container">
+                    <span class="progress-label">30%</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill critical" style="width: 30%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

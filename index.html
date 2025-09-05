@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenhouse Control Dashboard - Tablet</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Persistent Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-seedling"></i> Greenhouse</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item active" data-page="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </li>
+                <li class="nav-item" data-page="monitoring">
+                    <i class="fas fa-thermometer-half"></i>
+                    <span>Monitoring</span>
+                </li>
+                <li class="nav-item" data-page="controls">
+                    <i class="fas fa-sliders-h"></i>
+                    <span>Controls</span>
+                </li>
+                <li class="nav-item" data-page="camera">
+                    <i class="fas fa-camera"></i>
+                    <span>Camera Control</span>
+                </li>
+                <li class="nav-item" data-page="analytics">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analytics</span>
+                </li>
+                <li class="nav-item" data-page="alerts">
+                    <i class="fas fa-bell"></i>
+                    <span>Alerts</span>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="status-indicator">
+                    <span class="status-dot active"></span>
+                    <span>Operational</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="page-title">
+                    <h1 id="currentPageTitle">Dashboard</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="action-btn">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Page Content Container -->
+            <div class="content-container">
+                <!-- Dashboard Page -->
+                <div class="page active" id="dashboard-page">
+                    <div class="dashboard-grid">
+                        <div class="card visualization-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-cube"></i> Greenhouse Layout</h3>
+                                <div class="view-controls">
+                                    <button class="view-btn active"><i class="fas fa-cube"></i> 3D View</button>
+                                    <button class="view-btn"><i class="fas fa-map"></i> 2D Plan</button>
+                                </div>
+                            </div>
+                            <div class="visualization-container">
+                                <div id="3d-container"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon temperature">
+                                    <i class="fas fa-temperature-high"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h4>Temperature</h4>
+                                    <p class="stat-value">24.5°C</p>
+                                    <p class="stat-status optimal">Optimal</p>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-icon humidity">
+                                    <i class="fas fa-tint"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h4>Humidity</h4>
+                                    <p class="stat-value">78%</p>
+                                    <p class="stat-status warning">Warning</p>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-icon moisture">
+                                    <i class="fas fa-water"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h4>Soil Moisture</h4>
+                                    <p class="stat-value">42%</p>
+                                    <p class="stat-status optimal">Optimal</p>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-icon co2">
+                                    <i class="fas fa-wind"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h4>CO₂ Levels</h4>
+                                    <p class="stat-value">950 ppm</p>
+                                    <p class="stat-status optimal">Optimal</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monitoring Page -->
+                <div class="page" id="monitoring-page">
+                    <div class="sensor-grid">
+                        <div class="sensor-card">
+                            <div class="sensor-header">
+                                <h3><i class="fas fa-temperature-high"></i> Temperature</h3>
+                                <span class="sensor-status optimal">Optimal</span>
+                            </div>
+                            <div class="sensor-value">24.5°C</div>
+                            <div class="sensor-target">Target: 22-26°C</div>
+                            <div class="sensor-progress">
+                                <div class="progress-container">
+                                    <span class="progress-label">65%</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 65%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="sensor-card">
+                            <div class="sensor-header">
+                                <h3><i class="fas fa-tint"></i> Humidity</h3>
+                                <span class="sensor-status warning">Warning</span>
+                            </div>
+                            <div class="sensor-value">78%</div>
+                            <div class="sensor-target">Target: 60-70%</div>
+                            <div class="sensor-progress">
+                                <div class="progress-container">
+                                    <span class="progress-label">85%</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill warning" style="width: 85%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="sensor-card">
+                            <div class="sensor-header">
+                                <h3><i class="fas fa-water"></i> Soil Moisture</h3>
+                                <span class="sensor-status optimal">Optimal</span>
+                            </div>
+                            <div class="sensor-value">42%</div>
+                            <div class="sensor-target">Target: 35-50%</div>
+                            <div class="sensor-progress">
+                                <div class="progress-container">
+                                    <span class="progress-label">45%</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 45%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="sensor-card">
+                            <div class="sensor-header">
+                                <h3><i class="fas fa-sun"></i> Light Intensity</h3>
+                                <span class="sensor-status optimal">Optimal</span>
+                            </div>
+                            <div class="sensor-value">850 lux</div>
+                            <div class="sensor-target">Target: 600-1200 lux</div>
+                            <div class="sensor-progress">
+                                <div class="progress-container">
+                                    <span class="progress-label">70%</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 70%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="sensor-card">
+                            <div class="sensor-header">
+                                <h3><i class="fas fa-wind"></i> CO₂ Levels</h3>
+                                <span class="sensor-status optimal">Optimal</span>
+                            </div>
+                            <div class="sensor-value">950 ppm</div>
+                            <div class="sensor-target">Target: 800-1200 ppm</div>
+                            <div class="sensor-progress">
+                                <div class="progress-container">
+                                    <span class="progress-label">60%</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 60%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="sensor-card">
+                            <div class="sensor-header">
+                                <h3><i class="fas fa-vial"></i> pH Level</h3>
+                                <span class="sensor-status critical">Critical</span>
+                            </div>
+                            <div class="sensor-value">5.2</div>
+                            <div class="sensor-target">Target: 6.0-7.0</div>
+                            <div class="sensor-progress">
+                                <div class="progress-container">
+                                    <span class="progress-label">30%</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill critical" style="width: 30%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls Page -->
+                <div class="page" id="controls-page">
+                    <div class="controls-container">
+                        <div class="control-section">
+                            <h3><i class="fas fa-tint"></i> Irrigation System</h3>
+                            <div class="control-group">
+                                <div class="control-item">
+                                    <label><i class="fas fa-shower"></i> Water Pump</label>
+                                    <div class="toggle-switch active">
+                                        <span class="toggle-slider"></span>
+                                    </div>
+                                    <span class="control-status active">Running</span>
+                                </div>
+                                <div class="control-item">
+                                    <label><i class="far fa-clock"></i> Duration</label>
+                                    <select>
+                                        <option>5 min</option>
+                                        <option selected>10 min</option>
+                                        <option>15 min</option>
+                                        <option>20 min</option>
+                                    </select>
+                                    <span class="control-status">10 min</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="control-section">
+                            <h3><i class="fas fa-fan"></i> Ventilation</h3>
+                            <div class="control-group">
+                                <div class="control-item">
+                                    <label><i class="fas fa-fan"></i> Fan Speed</label>
+                                    <div style="display: flex; align-items: center;">
+                                        <input type="range" min="0" max="100" value="60" id="fanSpeed">
+                                        <span class="slider-value" id="fanSpeedValue">60%</span>
+                                    </div>
+                                    <span class="control-status">60%</span>
+                                </div>
+                                <div class="control-item">
+                                    <label><i class="fas fa-door-open"></i> Ventilation Flaps</label>
+                                    <div class="toggle-switch">
+                                        <span class="toggle-slider"></span>
+                                    </div>
+                                    <span class="control-status">Closed</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="control-section">
+                            <h3><i class="fas fa-lightbulb"></i> Lighting</h3>
+                            <div class="control-group">
+                                <div class="control-item">
+                                    <label><i class="fas fa-lightbulb"></i> Grow Lights</label>
+                                    <div class="toggle-switch active">
+                                        <span class="toggle-slider"></span>
+                                    </div>
+                                    <span class="control-status active">On</span>
+                                </div>
+                                <div class="control-item">
+                                    <label><i class="fas fa-sun"></i> Brightness</label>
+                                    <div style="display: flex; align-items: center;">
+                                        <input type="range" min="0" max="100" value="80" id="brightness">
+                                        <span class="slider-value" id="brightnessValue">80%</span>
+                                    </div>
+                                    <span class="control-status">80%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Preset Configurations -->
+                        <div class="control-section">
+                            <h3><i class="fas fa-magic"></i> Quick Presets</h3>
+                            <div class="preset-grid">
+                                <button class="preset-btn" data-preset="morning">
+                                    <i class="fas fa-sun"></i>
+                                    <span>Morning</span>
+                                </button>
+                                <button class="preset-btn" data-preset="afternoon">
+                                    <i class="fas fa-cloud-sun"></i>
+                                    <span>Afternoon</span>
+                                </button>
+                                <button class="preset-btn" data-preset="evening">
+                                    <i class="fas fa-moon"></i>
+                                    <span>Evening</span>
+                                </button>
+                                <button class="preset-btn" data-preset="night">
+                                    <i class="fas fa-star"></i>
+                                    <span>Night</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Camera Control Page -->
+                <div class="page" id="camera-page">
+                    <div class="camera-container">
+                        <div class="camera-view">
+                            <div class="camera-feed">
+                                <div class="feed-placeholder">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Camera Feed</p>
+                                </div>
+                            </div>
+                            <div class="camera-controls">
+                                <div class="movement-controls">
+                                    <div class="control-row">
+                                        <button class="control-btn" id="camera-up">
+                                            <i class="fas fa-arrow-up"></i>
+                                        </button>
+                                    </div>
+                                    <div class="control-row">
+                                        <button class="control-btn" id="camera-left">
+                                            <i class="fas fa-arrow-left"></i>
+                                        </button>
+                                        <button class="control-btn" id="camera-home">
+                                            <i class="fas fa-home"></i>
+                                        </button>
+                                        <button class="control-btn" id="camera-right">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                    <div class="control-row">
+                                        <button class="control-btn" id="camera-down">
+                                            <i class="fas fa-arrow-down"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="zoom-controls">
+                                    <button class="control-btn" id="zoom-in">
+                                        <i class="fas fa-search-plus"></i>
+                                    </button>
+                                    <button class="control-btn" id="zoom-out">
+                                        <i class="fas fa-search-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="cartesian-controls">
+                            <h3><i class="fas fa-robot"></i> Cartesian Robot Position</h3>
+                            <div class="position-display">
+                                <div class="position-axis">
+                                    <label>X Axis:</label>
+                                    <span class="position-value">120.5 mm</span>
+                                </div>
+                                <div class="position-axis">
+                                    <label>Y Axis:</label>
+                                    <span class="position-value">85.3 mm</span>
+                                </div>
+                                <div class="position-axis">
+                                    <label>Z Axis:</label>
+                                    <span class="position-value">210.0 mm</span>
+                                </div>
+                            </div>
+                            
+                            <div class="manual-controls">
+                                <div class="control-group">
+                                    <label>X Axis Movement (mm):</label>
+                                    <div class="axis-controls">
+                                        <button class="control-btn small" id="x-minus">-</button>
+                                        <input type="number" value="0" min="-100" max="100" step="1">
+                                        <button class="control-btn small" id="x-plus">+</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label>Y Axis Movement (mm):</label>
+                                    <div class="axis-controls">
+                                        <button class="control-btn small" id="y-minus">-</button>
+                                        <input type="number" value="0" min="-100" max="100" step="1">
+                                        <button class="control-btn small" id="y-plus">+</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label>Z Axis Movement (mm):</label>
+                                    <div class="axis-controls">
+                                        <button class="control-btn small" id="z-minus">-</button>
+                                        <input type="number" value="0" min="-100" max="100" step="1">
+                                        <button class="control-btn small" id="z-plus">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="preset-positions">
+                                <h4>Preset Positions</h4>
+                                <div class="preset-buttons">
+                                    <button class="preset-btn">Plant Bed 1</button>
+                                    <button class="preset-btn">Plant Bed 2</button>
+                                    <button class="preset-btn">Plant Bed 3</button>
+                                    <button class="preset-btn">Entrance</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics Page -->
+                <div class="page" id="analytics-page">
+                    <div class="analytics-container">
+                        <div class="chart-container">
+                            <canvas id="growthChart"></canvas>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon health">
+                                    <i class="fas fa-heartbeat"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h4>Plant Health</h4>
+                                    <p class="stat-value healthy">87%</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon yield">
+                                    <i class="fas fa-weight"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h4>Yield Forecast</h4>
+                                    <p class="stat-value">245 kg</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon water">
+                                    <i class="fas fa-tint"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h4>Water Usage</h4>
+                                    <p class="stat-value">1.2 L/day</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon harvest">
+                                    <i class="fas fa-calendar-harvest"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h4>Harvest Date</h4>
+                                    <p class="stat-value">18 days</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alerts Page -->
+                <div class="page" id="alerts-page">
+                    <div class="alerts-container">
+                        <div class="alert-item critical">
+                            <div class="alert-icon">!</div>
+                            <div class="alert-content">
+                                <h3><i class="fas fa-exclamation-triangle"></i> Soil pH Critical</h3>
+                                <p>Measured pH level is 5.2 (Target: 6.0-7.0)</p>
+                                <span class="alert-time">2 minutes ago</span>
+                            </div>
+                        </div>
+                        
+                        <div class="alert-item warning">
+                            <div class="alert-icon">!</div>
+                            <div class="alert-content">
+                                <h3><i class="fas fa-exclamation-circle"></i> High Humidity</h3>
+                                <p>Humidity at 78%, exceeds target range</p>
+                                <span class="alert-time">15 minutes ago</span>
+                            </div>
+                        </div>
+                        
+                        <div class="alert-item info">
+                            <div class="alert-icon">i</div>
+                            <div class="alert-content">
+                                <h3><i class="fas fa-check-circle"></i> Irrigation Cycle Complete</h3>
+                                <p>Zone 2 irrigation completed successfully</p>
+                                <span class="alert-time">1 hour ago</span>
+                            </div>
+                        </div>
+                        
+                        <div class="alert-item info">
+                            <div class="alert-icon">i</div>
+                            <div class="alert-content">
+                                <h3><i class="fas fa-calendar-alt"></i> Fertilization Scheduled</h3>
+                                <p>Next fertilization in 2 hours</p>
+                                <span class="alert-time">3 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

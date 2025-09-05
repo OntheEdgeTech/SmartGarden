@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% set page_title = "Camera Control" %}
+
+{% block content %}
+<!-- Camera Control Page -->
+<div class="page active" id="camera-page">
+    <div class="camera-container">
+        <div class="camera-view">
+            <div class="camera-feed">
+                <div class="feed-placeholder">
+                    <i class="fas fa-camera"></i>
+                    <p>Camera Feed</p>
+                </div>
+            </div>
+            <div class="camera-controls">
+                <div class="movement-controls">
+                    <div class="control-row">
+                        <button class="control-btn" id="camera-up">
+                            <i class="fas fa-arrow-up"></i>
+                        </button>
+                    </div>
+                    <div class="control-row">
+                        <button class="control-btn" id="camera-left">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <button class="control-btn" id="camera-home">
+                            <i class="fas fa-home"></i>
+                        </button>
+                        <button class="control-btn" id="camera-right">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="control-row">
+                        <button class="control-btn" id="camera-down">
+                            <i class="fas fa-arrow-down"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="zoom-controls">
+                    <button class="control-btn" id="zoom-in">
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                    <button class="control-btn" id="zoom-out">
+                        <i class="fas fa-search-minus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cartesian-controls">
+            <h3><i class="fas fa-robot"></i> Cartesian Robot Position</h3>
+            <div class="position-display">
+                <div class="position-axis">
+                    <label>X Axis:</label>
+                    <span class="position-value">120.5 mm</span>
+                </div>
+                <div class="position-axis">
+                    <label>Y Axis:</label>
+                    <span class="position-value">85.3 mm</span>
+                </div>
+                <div class="position-axis">
+                    <label>Z Axis:</label>
+                    <span class="position-value">210.0 mm</span>
+                </div>
+            </div>
+            
+            <div class="manual-controls">
+                <div class="control-group">
+                    <label>X Axis Movement (mm):</label>
+                    <div class="axis-controls">
+                        <button class="control-btn small" id="x-minus">-</button>
+                        <input type="number" value="0" min="-100" max="100" step="1">
+                        <button class="control-btn small" id="x-plus">+</button>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label>Y Axis Movement (mm):</label>
+                    <div class="axis-controls">
+                        <button class="control-btn small" id="y-minus">-</button>
+                        <input type="number" value="0" min="-100" max="100" step="1">
+                        <button class="control-btn small" id="y-plus">+</button>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label>Z Axis Movement (mm):</label>
+                    <div class="axis-controls">
+                        <button class="control-btn small" id="z-minus">-</button>
+                        <input type="number" value="0" min="-100" max="100" step="1">
+                        <button class="control-btn small" id="z-plus">+</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="preset-positions">
+                <h4>Preset Positions</h4>
+                <div class="preset-buttons">
+                    <button class="preset-btn">Plant Bed 1</button>
+                    <button class="preset-btn">Plant Bed 2</button>
+                    <button class="preset-btn">Plant Bed 3</button>
+                    <button class="preset-btn">Entrance</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

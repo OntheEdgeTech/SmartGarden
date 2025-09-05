@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Dashboard Page -->
+<div class="page active" id="dashboard-page">
+    <div class="dashboard-grid">
+        <div class="card visualization-card">
+            <div class="card-header">
+                <h3><i class="fas fa-cube"></i> Greenhouse Layout</h3>
+                <div class="view-controls">
+                    <button class="view-btn active"><i class="fas fa-cube"></i> 3D View</button>
+                    <button class="view-btn"><i class="fas fa-map"></i> 2D Plan</button>
+                </div>
+            </div>
+            <div class="visualization-container">
+                <div id="3d-container"></div>
+            </div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon temperature">
+                    <i class="fas fa-temperature-high"></i>
+                </div>
+                <div class="stat-info">
+                    <h4>Temperature</h4>
+                    <p class="stat-value">24.5°C</p>
+                    <p class="stat-status optimal">Optimal</p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon humidity">
+                    <i class="fas fa-tint"></i>
+                </div>
+                <div class="stat-info">
+                    <h4>Humidity</h4>
+                    <p class="stat-value">78%</p>
+                    <p class="stat-status warning">Warning</p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon moisture">
+                    <i class="fas fa-water"></i>
+                </div>
+                <div class="stat-info">
+                    <h4>Soil Moisture</h4>
+                    <p class="stat-value">42%</p>
+                    <p class="stat-status optimal">Optimal</p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon co2">
+                    <i class="fas fa-wind"></i>
+                </div>
+                <div class="stat-info">
+                    <h4>CO₂ Levels</h4>
+                    <p class="stat-value">950 ppm</p>
+                    <p class="stat-status optimal">Optimal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
