@@ -51,6 +51,21 @@ function initToggleSwitches() {
                     } else if (controlRow.querySelector('.control-label').textContent.includes('Grow Lights')) {
                         statusBadge.textContent = 'On';
                         statusBadge.classList.add('active');
+                    } else if (controlRow.querySelector('.control-label').textContent.includes('Heating System')) {
+                        statusBadge.textContent = 'On';
+                        statusBadge.classList.add('active');
+                    } else if (controlRow.querySelector('.control-label').textContent.includes('CO2 Enrichment')) {
+                        statusBadge.textContent = 'On';
+                        statusBadge.classList.add('active');
+                    } else if (controlRow.querySelector('.control-label').textContent.includes('Shading System')) {
+                        statusBadge.textContent = 'Open';
+                        statusBadge.classList.add('active');
+                    } else if (controlRow.querySelector('.control-label').textContent.includes('Auto Irrigation')) {
+                        statusBadge.textContent = 'On';
+                        statusBadge.classList.add('active');
+                    } else if (controlRow.querySelector('.control-label').textContent.includes('Nutrient Pump')) {
+                        statusBadge.textContent = 'On';
+                        statusBadge.classList.add('active');
                     } else {
                         statusBadge.textContent = 'Open';
                         statusBadge.classList.add('active');
@@ -60,6 +75,21 @@ function initToggleSwitches() {
                         statusBadge.textContent = 'Stopped';
                         statusBadge.classList.remove('active');
                     } else if (controlRow.querySelector('.control-label').textContent.includes('Grow Lights')) {
+                        statusBadge.textContent = 'Off';
+                        statusBadge.classList.remove('active');
+                    } else if (controlRow.querySelector('.control-label').textContent.includes('Heating System')) {
+                        statusBadge.textContent = 'Off';
+                        statusBadge.classList.remove('active');
+                    } else if (controlRow.querySelector('.control-label').textContent.includes('CO2 Enrichment')) {
+                        statusBadge.textContent = 'Off';
+                        statusBadge.classList.remove('active');
+                    } else if (controlRow.querySelector('.control-label').textContent.includes('Shading System')) {
+                        statusBadge.textContent = 'Closed';
+                        statusBadge.classList.remove('active');
+                    } else if (controlRow.querySelector('.control-label').textContent.includes('Auto Irrigation')) {
+                        statusBadge.textContent = 'Off';
+                        statusBadge.classList.remove('active');
+                    } else if (controlRow.querySelector('.control-label').textContent.includes('Nutrient Pump')) {
                         statusBadge.textContent = 'Off';
                         statusBadge.classList.remove('active');
                     } else {
@@ -104,6 +134,40 @@ function initSliders() {
             const statusBadge = controlRow.querySelector('.status-badge');
             if (statusBadge) {
                 statusBadge.textContent = brightnessSlider.value + '%';
+            }
+        });
+    }
+    
+    // CO2 level slider
+    const co2Slider = document.getElementById('co2-level');
+    const co2Value = co2Slider ? co2Slider.nextElementSibling : null;
+    
+    if (co2Slider && co2Value) {
+        co2Slider.addEventListener('input', () => {
+            co2Value.textContent = co2Slider.value + ' ppm';
+            
+            // Update status indicator
+            const controlRow = co2Slider.closest('.control-row');
+            const statusBadge = controlRow.querySelector('.status-badge');
+            if (statusBadge) {
+                statusBadge.textContent = co2Slider.value + ' ppm';
+            }
+        });
+    }
+    
+    // Nutrient concentration slider
+    const nutrientSlider = document.getElementById('nutrient-concentration');
+    const nutrientValue = nutrientSlider ? nutrientSlider.nextElementSibling : null;
+    
+    if (nutrientSlider && nutrientValue) {
+        nutrientSlider.addEventListener('input', () => {
+            nutrientValue.textContent = nutrientSlider.value + '%';
+            
+            // Update status indicator
+            const controlRow = nutrientSlider.closest('.control-row');
+            const statusBadge = controlRow.querySelector('.status-badge');
+            if (statusBadge) {
+                statusBadge.textContent = nutrientSlider.value + '%';
             }
         });
     }
@@ -734,6 +798,89 @@ function initPresetConfigurations() {
             }, 2000);
         });
     }
+    
+    // Create custom preset button
+    const createPresetBtn = document.getElementById('create-preset');
+    if (createPresetBtn) {
+        createPresetBtn.addEventListener('click', () => {
+            const presetName = document.getElementById('preset-name').value;
+            if (presetName.trim() !== '') {
+                // Visual feedback
+                createPresetBtn.innerHTML = '<i class="fas fa-check"></i> Created!';
+                setTimeout(() => {
+                    createPresetBtn.innerHTML = '<i class="fas fa-plus"></i> Create Preset';
+                    document.getElementById('preset-name').value = '';
+                }, 2000);
+            }
+        });
+    }
+}
+
+// Numeric input functionality
+function initNumericInputs() {
+    const numericInputs = document.querySelectorAll('.control-numeric');
+    
+    numericInputs.forEach(input => {
+        input.addEventListener('change', () => {
+            // Ensure the value is within the valid range
+            const min = parseFloat(input.min);
+            const max = parseFloat(input.max);
+            let value = parseFloat(input.value);
+            
+            if (value < min) {
+                input.value = min;
+                value = min;
+            } else if (value > max) {
+                input.value = max;
+                value = max;
+            }
+            
+            // Update status indicator if needed
+            const controlRow = input.closest('.control-row');
+            const statusBadge = controlRow.querySelector('.status-badge');
+            if (statusBadge) {
+                if (input.id === 'ph-level') {
+                    statusBadge.textContent = value + ' pH';
+                } else if (input.id === 'target-temperature') {
+                    statusBadge.textContent = value + '°C';
+                } else if (input.id === 'schedule-duration') {
+                    statusBadge.textContent = value + ' min';
+                }
+            }
+        });
+    });
+}
+
+// Multi-state switch functionality
+function initMultiStateSwitches() {
+    const multiStateSwitches = document.querySelectorAll('.multi-state-switch');
+    
+    multiStateSwitches.forEach(switchEl => {
+        const options = switchEl.querySelectorAll('.state-option');
+        const statusBadge = switchEl.closest('.control-row').querySelector('.status-badge');
+        
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove active class from all options
+                options.forEach(opt => opt.classList.remove('active'));
+                
+                // Add active class to clicked option
+                option.classList.add('active');
+                
+                // Update status badge
+                if (statusBadge) {
+                    const state = option.getAttribute('data-state');
+                    statusBadge.textContent = state.charAt(0).toUpperCase() + state.slice(1);
+                    
+                    if (state === 'off') {
+                        statusBadge.classList.remove('active');
+                    } else {
+                        statusBadge.classList.add('active');
+                    }
+                }
+            });
+        });
+    });
 }
 
 // Initialize everything when the page loads
@@ -746,6 +893,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize sliders
     initSliders();
+    
+    // Initialize numeric inputs
+    initNumericInputs();
+    
+    // Initialize multi-state switches
+    initMultiStateSwitches();
     
     // Initialize preset configurations
     initPresetConfigurations();

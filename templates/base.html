@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Greenhouse Control Dashboard - Tablet</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    {% if request.endpoint == 'controls2' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/controls2.css') }}">
+    {% endif %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Font Awesome for icons -->
@@ -76,5 +79,8 @@
     </div>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% if request.endpoint == 'controls2' %}
+    <script src="{{ url_for('static', filename='js/controls2.js') }}"></script>
+    {% endif %}
 </body>
 </html>

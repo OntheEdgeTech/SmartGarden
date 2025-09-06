@@ -14,6 +14,10 @@ def monitoring():
 def controls():
     return render_template('controls.html')
 
+@app.route('/controls2')
+def controls2():
+    return render_template('controls2.html')
+
 @app.route('/camera')
 def camera():
     return render_template('camera.html')

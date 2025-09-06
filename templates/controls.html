@@ -69,7 +69,6 @@
                                 <input type="range" min="0" max="100" value="60" id="fan-speed" class="control-slider">
                                 <span class="slider-value">60%</span>
                             </div>
-                            <span class="status-badge">60%</span>
                         </div>
                     </div>
                     
@@ -83,6 +82,68 @@
                                 <span class="toggle-slider"></span>
                             </div>
                             <span class="status-badge">Closed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Climate Control -->
+            <div class="control-card climate">
+                <div class="card-header">
+                    <h3><i class="fas fa-thermometer-half"></i> Climate Control</h3>
+                    <div class="status-indicator active">Online</div>
+                </div>
+                
+                <div class="control-items">
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-fire"></i>
+                            <span>Heating System</span>
+                        </div>
+                        <div class="control-widget">
+                            <div class="toggle-switch" data-control="heating-system">
+                                <span class="toggle-slider"></span>
+                            </div>
+                            <span class="status-badge">Off</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-temperature-high"></i>
+                            <span>Target Temperature</span>
+                        </div>
+                        <div class="control-widget">
+                            <div class="numeric-input-container">
+                                <input type="number" min="15" max="35" value="24" id="target-temperature" class="control-numeric" step="0.5">
+                                <span class="unit">°C</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-wind"></i>
+                            <span>CO2 Enrichment</span>
+                        </div>
+                        <div class="control-widget">
+                            <div class="toggle-switch" data-control="co2-enrichment">
+                                <span class="toggle-slider"></span>
+                            </div>
+                            <span class="status-badge">Off</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-wind"></i>
+                            <span>CO2 Level</span>
+                        </div>
+                        <div class="control-widget">
+                            <div class="slider-container">
+                                <input type="range" min="400" max="1200" value="800" id="co2-level" class="control-slider">
+                                <span class="slider-value">800 ppm</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -118,6 +179,186 @@
                             <div class="slider-container">
                                 <input type="range" min="0" max="100" value="80" id="light-brightness" class="control-slider">
                             </div>
+                        </div>
+                    </div>
+                    
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-cloud-sun"></i>
+                            <span>Shading System</span>
+                        </div>
+                        <div class="control-widget">
+                            <div class="toggle-switch" data-control="shading-system">
+                                <span class="toggle-slider"></span>
+                            </div>
+                            <span class="status-badge">Closed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Nutrient Delivery System -->
+            <div class="control-card nutrients">
+                <div class="card-header">
+                    <h3><i class="fas fa-seedling"></i> Nutrient Delivery</h3>
+                    <div class="status-indicator active">Online</div>
+                </div>
+                
+                <div class="control-items">
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-flask"></i>
+                            <span>Nutrient Pump</span>
+                        </div>
+                        <div class="control-widget">
+                            <div class="toggle-switch" data-control="nutrient-pump">
+                                <span class="toggle-slider"></span>
+                            </div>
+                            <span class="status-badge">Off</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-vial"></i>
+                            <span>Nutrient Concentration</span>
+                        </div>
+                        <div class="control-widget">
+                            <div class="slider-container">
+                                <input type="range" min="0" max="100" value="50" id="nutrient-concentration" class="control-slider">
+                                <span class="slider-value">50%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-prescription-bottle"></i>
+                            <span>pH Level</span>
+                        </div>
+                        <div class="control-widget">
+                            <div class="numeric-input-container">
+                                <input type="number" min="5.5" max="7.5" value="6.7" id="ph-level" class="control-numeric" step="0.1">
+                                <span class="unit">pH</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Advanced Scheduling System -->
+            <div class="control-card scheduling">
+                <div class="card-header">
+                    <h3><i class="fas fa-clock"></i> Advanced Scheduling</h3>
+                    <div class="status-indicator">Ready</div>
+                </div>
+                
+                <div class="control-items">
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>Auto Irrigation</span>
+                        </div>
+                        <div class="control-widget">
+                            <div class="toggle-switch" data-control="auto-irrigation">
+                                <span class="toggle-slider"></span>
+                            </div>
+                            <span class="status-badge">Off</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Schedule Time</span>
+                        </div>
+                        <div class="control-widget">
+                            <input type="time" id="irrigation-time" class="control-time" value="06:00">
+                        </div>
+                    </div>
+                    
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-redo"></i>
+                            <span>Frequency</span>
+                        </div>
+                        <div class="control-widget">
+                            <select class="control-select" id="irrigation-frequency">
+                                <option value="daily" selected>Daily</option>
+                                <option value="alternate">Every other day</option>
+                                <option value="weekly">Weekly</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-history"></i>
+                            <span>Duration (min)</span>
+                        </div>
+                        <div class="control-widget">
+                            <div class="numeric-input-container">
+                                <input type="number" min="1" max="60" value="10" id="schedule-duration" class="control-numeric">
+                                <span class="unit">min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Conditional Logic Controls -->
+            <div class="control-card logic">
+                <div class="card-header">
+                    <h3><i class="fas fa-project-diagram"></i> Conditional Logic</h3>
+                    <div class="status-indicator">Ready</div>
+                </div>
+                
+                <div class="control-items">
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-thermometer-full"></i>
+                            <span>Temp-Controlled Ventilation</span>
+                        </div>
+                        <div class="control-widget">
+                            <div class="multi-state-switch" data-control="temp-ventilation">
+                                <div class="state-option active" data-state="off">Off</div>
+                                <div class="state-option" data-state="auto">Auto</div>
+                                <div class="state-option" data-state="on">On</div>
+                                <div class="state-indicator"></div>
+                            </div>
+                            <span class="status-badge">Off</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-tint"></i>
+                            <span>Moisture-Based Irrigation</span>
+                        </div>
+                        <div class="control-widget">
+                            <div class="multi-state-switch" data-control="moisture-irrigation">
+                                <div class="state-option active" data-state="off">Off</div>
+                                <div class="state-option" data-state="auto">Auto</div>
+                                <div class="state-option" data-state="on">On</div>
+                                <div class="state-indicator"></div>
+                            </div>
+                            <span class="status-badge">Off</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-row">
+                        <div class="control-label">
+                            <i class="fas fa-sun"></i>
+                            <span>Light-Dependent Shading</span>
+                        </div>
+                        <div class="control-widget">
+                            <div class="multi-state-switch" data-control="light-shading">
+                                <div class="state-option active" data-state="off">Off</div>
+                                <div class="state-option" data-state="auto">Auto</div>
+                                <div class="state-option" data-state="on">On</div>
+                                <div class="state-indicator"></div>
+                            </div>
+                            <span class="status-badge">Off</span>
                         </div>
                     </div>
                 </div>
@@ -164,6 +405,63 @@
                     <button class="btn btn-secondary" id="save-preset">
                         <i class="fas fa-save"></i> Save Current
                     </button>
+                </div>
+                
+                <!-- Custom Preset Form -->
+                <div class="custom-preset-form" id="custom-preset-form">
+                    <h4><i class="fas fa-plus-circle"></i> Create Custom Preset</h4>
+                    <div class="form-group">
+                        <label for="preset-name">Preset Name</label>
+                        <input type="text" id="preset-name" class="control-numeric" placeholder="My Custom Preset">
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="save-current-state"> Save current control states
+                        </label>
+                    </div>
+                    <button class="btn btn-primary" id="create-preset">
+                        <i class="fas fa-plus"></i> Create Preset
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Control Dependencies -->
+            <div class="control-card dependencies">
+                <div class="card-header">
+                    <h3><i class="fas fa-project-diagram"></i> Control Dependencies</h3>
+                    <div class="status-indicator active">Monitoring</div>
+                </div>
+                
+                <div class="dependencies-info">
+                    <div class="dependency-item">
+                        <div class="dependency-label">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>Heating Recommendation</span>
+                        </div>
+                        <div class="dependency-status status-badge warning">
+                            <i class="fas fa-fan"></i> Increase ventilation
+                        </div>
+                    </div>
+                    
+                    <div class="dependency-item">
+                        <div class="dependency-label">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Irrigation Notice</span>
+                        </div>
+                        <div class="dependency-status status-badge">
+                            <i class="fas fa-tint"></i> Next in 4 hours
+                        </div>
+                    </div>
+                    
+                    <div class="dependency-item">
+                        <div class="dependency-label">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Lighting Suggestion</span>
+                        </div>
+                        <div class="dependency-status status-badge active">
+                            <i class="fas fa-sun"></i> Optimal for growth
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
